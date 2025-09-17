@@ -1,4 +1,4 @@
-const BACKEND_URL = "https://animorex-auth-2.onrender.com";
+const BACKEND_URL = "https://animorex-auth-1.onrender.com";
 
 
 
@@ -308,3 +308,4 @@ if (document.body.id === 'results-page') {
 } else {
   loadGenres();
 }
+
