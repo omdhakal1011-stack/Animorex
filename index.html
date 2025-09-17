@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animorex</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css"/>
+</head>
+<body id="index-page">
+  <header>
+    <h1 class="site-title">Animorex</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="results.html?sort=trending">Trending</a>
+      <button id="auth-trigger" class="auth-btn">🔐 Login / Sign Up</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="search-section">
+      <div class="search-row">
+        <button id="genre-btn">🎭 Genres</button>
+
+        <select id="sort-select" class="sort-dropdown">
+          <option value="">Sort by</option>
+          <option value="popularity">🔥 Popularity</option>
+          <option value="score">⭐ Score</option>
+          <option value="year">📅 Year</option>
+          <option value="recent">🆕 Recently Added</option>
+        </select>
+
+        <div class="search-box">
+          <input type="text" id="search" placeholder="Search anime..."/>
+          <button id="search-btn" class="search-btn" aria-label="Search">
+            <i class="ph ph-magnifying-glass"></i>
+          </button>
+          <ul id="suggestions"></ul>
+        </div>
+      </div>
+
+      <div id="genre-popup" class="genre-popup hidden">
+        <div class="genre-options" id="genre-options"></div>
+        <button id="apply-genres">Apply</button>
+      </div>
+    </section>
+
+    <section id="anime-list">
+      <h3>🔥 Trending Anime</h3>
+      <div class="trending-wrapper">
+        <button id="trend-left" class="scroll-btn" aria-label="Scroll left">
+          <i class="ph ph-caret-left"></i>
+        </button>
+        <div class="scroll-row"></div>
+        <button id="trend-right" class="scroll-btn" aria-label="Scroll right">
+          <i class="ph ph-caret-right"></i>
+        </button>
+      </div>
+      <a href="results.html?sort=trending" class="view-all-btn">🎬 View All Trending</a>
+    </section>
+
+    <section id="most-favourite">
+      <h3>💘 Most Favourite Anime</h3>
+      <div id="favourite-slider" class="anime-slider"></div>
+    </section>
+  </main>
+
+  <button id="back-to-top" class="back-top-btn" aria-label="Back to top">⬆ Top</button>
+  <footer>© 2025 Animorex. Built for anime fans worldwide.</footer>
+
+  <!-- Auth Modal -->
+  <div id="auth-modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="close-auth" class="close-btn">×</span>
+
+      <h2 class="auth-title">Welcome back</h2>
+
+      <div class="social-login">
+        <button id="google-login" class="google-btn">🟢 Continue with Google</button>
+        <button id="discord-login" class="discord-btn">🔵 Continue with Discord</button>
+      </div>
+
+      <div class="auth-divider"><span>or</span></div>
+
+      <div class="auth-tabs">
+        <button id="login-tab" class="active">Login</button>
+        <button id="signup-tab">Sign Up</button>
+      </div>
+
+      <form id="login-form" class="auth-form">
+        <input type="email" id="login-email" placeholder="📧 Email" required />
+        <input type="password" id="login-password" placeholder="🔑 Password" required />
+        <button type="submit" class="primary-btn">🚪 Log In</button>
+      </form>
+
+      <form id="signup-form" class="auth-form hidden">
+        <input type="text" id="signup-username" placeholder="👤 Username" required />
+        <input type="email" id="signup-email" placeholder="📧 Email" required />
+        <input type="password" id="signup-password" placeholder="🔑 Password" required />
+        <input type="password" id="signup-confirm" placeholder="🔁 Confirm Password" required />
+        <button type="submit" class="primary-btn">✨ Sign Up</button>
+      </form>
+
+      <p class="auth-note">By continuing, you agree to our community rules.</p>
+    </div>
+  </div>
+
+  <!-- Mobile bottom nav -->
+  <nav class="mobile-nav">
+    <a href="index.html"><i class="ph ph-house"></i><span>Home</span></a>
+    <a href="results.html?sort=trending"><i class="ph ph-fire"></i><span>Trending</span></a>
+    <button id="auth-trigger-mobile"><i class="ph ph-user-circle"></i><span>Login</span></button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
