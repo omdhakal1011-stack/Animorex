@@ -1,3 +1,5 @@
+const BACKEND_URL = "https://animorex-auth.onrender.com";
+
 // ---------- DOM ----------
 const genreBtn = document.getElementById('genre-btn');
 const genrePopup = document.getElementById('genre-popup');
@@ -99,7 +101,11 @@ if (searchInput && suggestionsList) {
 }
 
 // ---------- Back to Top ----------
-if (backToTopBtn) backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+if (backToTopBtn) {
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
 // ---------- Trending ----------
 if (trendLeft && trendRight && trendRow) {
@@ -143,25 +149,23 @@ if (favSlider && document.body.id === 'index-page') {
         `;
       };
       show();
-      setInterval(() => { idx = (idx + 1) % favs.length; show(); }, 3000);
+      setInterval(() => {
+        idx = (idx + 1) % favs.length;
+        show();
+      }, 3000);
     });
 }
-
 // ---------- Results Fetch ----------
 function fetchResults(query, genres, page = 1) {
   let url = `https://api.jikan.moe/v4/anime?page=${page}`;
 
-  // Query
   if (query) url += `&q=${encodeURIComponent(query)}`;
-
-  // Genres (map names -> IDs)
   if (genres) {
     const genreList = genres.split(',').map(name => genreMap[name.trim().toLowerCase()]);
     const validIds = genreList.filter(Boolean);
     if (validIds.length > 0) url += `&genres=${validIds.join(',')}`;
   }
 
-  // Sort
   const sortValue = sortSelect?.value;
   if (sortValue === 'score') url += '&order_by=score&sort=desc';
   else if (sortValue === 'popularity') url += '&order_by=members&sort=desc';
@@ -238,30 +242,36 @@ sortSelect?.addEventListener('change', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// ---------- Auth modal (UI only) ----------
+// ---------- Auth Modal ----------
 function openAuth() { authModal?.classList.remove('hidden'); }
 function closeAuthModal() { authModal?.classList.add('hidden'); }
 authTrigger?.addEventListener('click', openAuth);
 authTriggerMobile?.addEventListener('click', openAuth);
 closeAuth?.addEventListener('click', closeAuthModal);
-authModal?.addEventListener('click', (e) => { if (e.target === authModal) closeAuthModal(); });
+authModal?.addEventListener('click', (e) => {
+  if (e.target === authModal) closeAuthModal();
+});
 
 // Tabs
 loginTab?.addEventListener('click', () => {
-  loginTab.classList.add('active'); signupTab.classList.remove('active');
-  loginForm.classList.remove('hidden'); signupForm.classList.add('hidden');
+  loginTab.classList.add('active');
+  signupTab.classList.remove('active');
+  loginForm.classList.remove('hidden');
+  signupForm.classList.add('hidden');
 });
 signupTab?.addEventListener('click', () => {
-  signupTab.classList.add('active'); loginTab.classList.remove('active');
-  signupForm.classList.remove('hidden'); loginForm.classList.add('hidden');
+  signupTab.classList.add('active');
+  loginTab.classList.remove('active');
+  signupForm.classList.remove('hidden');
+  loginForm.classList.add('hidden');
 });
 
-// Social buttons (placeholder actions)
+// OAuth buttons
 googleBtn?.addEventListener('click', () => {
-  alert('Google login will be enabled after backend setup.');
+  window.location.href = `${BACKEND_URL}/api/auth/google/login`;
 });
 discordBtn?.addEventListener('click', () => {
-  alert('Discord login will be enabled after backend setup.');
+  window.location.href = `${BACKEND_URL}/api/auth/discord/login`;
 });
 
 // Forms (UI validation only)
@@ -284,7 +294,6 @@ const qParam = params.get('q');
 const gParam = params.get('genres');
 const sortParam = params.get('sort');
 
-// Preselect sort if coming from link like ?sort=trending -> treat as popularity
 if (sortParam && sortSelect) {
   if (sortParam === 'trending') sortSelect.value = 'popularity';
 }
