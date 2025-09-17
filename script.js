@@ -1,5 +1,7 @@
 const BACKEND_URL = "https://animorex-auth-2.onrender.com";
 
+
+
 // ---------- DOM ----------
 const genreBtn = document.getElementById('genre-btn');
 const genrePopup = document.getElementById('genre-popup');
@@ -266,13 +268,16 @@ signupTab?.addEventListener('click', () => {
   loginForm.classList.add('hidden');
 });
 
-// OAuth buttons
+// OAuth button
+
 googleBtn?.addEventListener('click', () => {
   window.location.href = `${BACKEND_URL}/api/auth/google/login`;
 });
+
 discordBtn?.addEventListener('click', () => {
   window.location.href = `${BACKEND_URL}/api/auth/discord/login`;
 });
+
 
 // Forms (UI validation only)
 loginForm?.addEventListener('submit', (e) => {
@@ -303,4 +308,3 @@ if (document.body.id === 'results-page') {
 } else {
   loadGenres();
 }
-
