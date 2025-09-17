@@ -18,10 +18,10 @@
   </header>
 
   <main>
+    <!-- Search Section -->
     <section id="search-section">
       <div class="search-row">
         <button id="genre-btn">🎭 Genres</button>
-
         <select id="sort-select" class="sort-dropdown">
           <option value="">Sort by</option>
           <option value="popularity">🔥 Popularity</option>
@@ -29,7 +29,6 @@
           <option value="year">📅 Year</option>
           <option value="recent">🆕 Recently Added</option>
         </select>
-
         <div class="search-box">
           <input type="text" id="search" placeholder="Search anime..."/>
           <button id="search-btn" class="search-btn" aria-label="Search">
@@ -38,13 +37,13 @@
           <ul id="suggestions"></ul>
         </div>
       </div>
-
       <div id="genre-popup" class="genre-popup hidden">
         <div class="genre-options" id="genre-options"></div>
         <button id="apply-genres">Apply</button>
       </div>
     </section>
 
+    <!-- Results Section -->
     <section id="results-section">
       <h2 class="results-heading">🎬 Search Results</h2>
       <div id="anime-container" class="anime-grid"></div>
@@ -59,27 +58,21 @@
   <div id="auth-modal" class="modal hidden">
     <div class="modal-content">
       <span id="close-auth" class="close-btn">×</span>
-
       <h2 class="auth-title">Welcome back</h2>
-
       <div class="social-login">
         <button id="google-login" class="google-btn">🟢 Continue with Google</button>
         <button id="discord-login" class="discord-btn">🔵 Continue with Discord</button>
       </div>
-
       <div class="auth-divider"><span>or</span></div>
-
       <div class="auth-tabs">
         <button id="login-tab" class="active">Login</button>
         <button id="signup-tab">Sign Up</button>
       </div>
-
       <form id="login-form" class="auth-form">
         <input type="email" id="login-email" placeholder="📧 Email" required />
         <input type="password" id="login-password" placeholder="🔑 Password" required />
         <button type="submit" class="primary-btn">🚪 Log In</button>
       </form>
-
       <form id="signup-form" class="auth-form hidden">
         <input type="text" id="signup-username" placeholder="👤 Username" required />
         <input type="email" id="signup-email" placeholder="📧 Email" required />
@@ -87,12 +80,11 @@
         <input type="password" id="signup-confirm" placeholder="🔁 Confirm Password" required />
         <button type="submit" class="primary-btn">✨ Sign Up</button>
       </form>
-
       <p class="auth-note">By continuing, you agree to our community rules.</p>
     </div>
   </div>
 
-  <!-- Mobile bottom nav -->
+  <!-- Mobile Nav -->
   <nav class="mobile-nav">
     <a href="index.html"><i class="ph ph-house"></i><span>Home</span></a>
     <a href="results.html?sort=trending"><i class="ph ph-fire"></i><span>Trending</span></a>
