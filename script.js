@@ -1,4 +1,4 @@
-const BACKEND_URL = "https://animorex-auth.onrender.com";
+const BACKEND_URL = "https://animorex-auth-2.onrender.com";
 
 // ---------- DOM ----------
 const genreBtn = document.getElementById('genre-btn');
@@ -303,3 +303,4 @@ if (document.body.id === 'results-page') {
 } else {
   loadGenres();
 }
+
